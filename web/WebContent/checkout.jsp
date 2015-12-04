@@ -280,8 +280,8 @@
 				rules: {
 					ten: {required: true},  
 					ngaySinh: {required: true},
-					email: {required: true},
-					soDienThoai: {required: true},
+					email: {required: true, email: true},
+					soDienThoai: {required: true, number: true, minlength: 9, maxlength: 15},
 					diaChi: {required: true}
 				},
 				highlight: function(element) {
@@ -291,11 +291,11 @@
 		            $(element).closest('.form-group').removeClass('has-error');
 		        },
 				messages: {
-					ten: "Vui lòng điền tên !",
-					ngaySinh: "Vui lòng điền ngày sinh !",
-					email: "Vui lòng điền Email !",
-					soDienThoai: "Vui lòng điền số điện thoại",
-					diaChi: "Vui lòng điền địa chỉ"
+					ten: "Vui lòng điền tên.",
+					ngaySinh: "Ngày sinh chưa hợp lệ.",
+					email: "Email chưa hợp lệ.",
+					soDienThoai: "Số điện thoại chưa hợp lệ.",
+					diaChi: "Vui lòng điền địa chỉ."
 				},
 				tooltip_options: {
 					ten: {placement:'top', trigger:'hover focus'},

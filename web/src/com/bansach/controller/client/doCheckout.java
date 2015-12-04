@@ -39,7 +39,7 @@ public class doCheckout extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		doPost(request, response);
 	}
 
 	/**
@@ -64,6 +64,14 @@ public class doCheckout extends HttpServlet {
 		String ngaySinh = request.getParameter("ngaySinh");
 		String diaChi = request.getParameter("diaChi");
 		String ghiChu = request.getParameter("ghiChu");
+		
+		// validate du lieu
+		if (!Validate.isEmail(email) || !Validate.isBirthday(ngaySinh) || !Validate.isNumber(soDienThoai)) {
+			// loi du lieu
+			// redirect
+			response.sendRedirect(request.getContextPath() + "/checkout?err=Loi_du_lieu");
+			return;
+		}
 		
 		// get GioHang from session
 		gioHang = MyUtils.getGioHang(request.getSession());
